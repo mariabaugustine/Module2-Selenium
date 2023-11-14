@@ -73,6 +73,13 @@ namespace SeleniumExample
             Assert.That(driver.Title.Contains("Images"));
             Console.WriteLine("Image link test - Pass");
         }
+        public void LocationTest()
+        {
+            string location = driver.FindElement(By.XPath("/html/body/div[1]/div[6]/div[1]")).Text;
+            Thread.Sleep(2000);
+            Assert.That(location.Equals("India"));
+            Console.WriteLine("Loc - Pass");
+        }
         public void Destruct()
 
         {

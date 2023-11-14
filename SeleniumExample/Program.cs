@@ -26,7 +26,8 @@ try
     //gHPTests.PageSourceandURLTests();
     //gHPTests.GSTests();
     //gHPTests.GMailLinkTest();
-    gHPTests.ImagesLinkTest();
+    // gHPTests.ImagesLinkTest();
+    gHPTests.LocationTest();
     
 }
 catch (AssertionException)
