@@ -51,8 +51,9 @@ namespace Assignment1_14_11_2023
             //IWebElement gsButton = driver.FindElement(By.Name("btnK"));
             IWebElement gsbutton = driver.FindElement(By.ClassName("gNO89b"));
             gsbutton.Click();
-            //Assert.AreEqual("hp laptop - Google Search", driver.Title);
-            //Console.WriteLine("GS TEST - Pass");
+            //Console.WriteLine("Title:"+driver.Title);
+            Assert.AreEqual("what's new for Diwali 2023 - Google Search", driver.Title);
+            Console.WriteLine("GS TEST - Pass");
         }
         public void Exit()
         {
