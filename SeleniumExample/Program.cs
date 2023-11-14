@@ -5,34 +5,47 @@ using OpenQA.Selenium.DevTools.V117.WebAuthn;
 using SeleniumExample;
 using System.Runtime.InteropServices;
 GHPTests gHPTests = new GHPTests();
-
-Console.WriteLine("Enter th choice:\n1.Edge Driver\n2.Chrome Driver");
-switch(Convert.ToInt32(Console.ReadLine()))
+List<string>drivers= new List<string>();
+//drivers.Add("Edge");
+drivers.Add("Chrome");
+foreach (var item in drivers)
 {
-    case 1:
-        gHPTests.InitializeEdgeDriver(); break;
-    case 2:
-        gHPTests.InitializeChromeDriver(); break;
-    default:
-        Console.WriteLine("Invalid Entry");
-        break;
-
-}
+    switch (item)
+    {
+        case "Edge": gHPTests.InitializeEdgeDriver(); break;
+        case "Chrome": gHPTests.InitializeChromeDriver(); break;
+    }
 
 
-try
-{
-    //gHPTests.TitleTest();
-    //gHPTests.PageSourceandURLTests();
-    //gHPTests.GSTests();
-    //gHPTests.GMailLinkTest();
-    // gHPTests.ImagesLinkTest();
-    gHPTests.LocationTest();
-    
+    //Console.WriteLine("Enter th choice:\n1.Edge Driver\n2.Chrome Driver");
+    //switch(Convert.ToInt32(Console.ReadLine()))
+    //{
+    //    case 1:
+    //        gHPTests.InitializeEdgeDriver(); break;
+    //    case 2:
+    //        gHPTests.InitializeChromeDriver(); break;
+    //    default:
+    //        Console.WriteLine("Invalid Entry");
+    //        break;
+
+    //}
+
+
+    try
+    {
+        //gHPTests.TitleTest();
+        //gHPTests.PageSourceandURLTests();
+        gHPTests.GSTests();
+        //gHPTests.GMailLinkTest();
+        //gHPTests.ImagesLinkTest();
+        //gHPTests.LocationTest();
+        //gHPTests.YoutubeLinkTest();
+
+    }
+    catch (AssertionException)
+    {
+        Console.WriteLine("Fail");
+    }
+    gHPTests.Destruct();
 }
-catch (AssertionException)
-{
-    Console.WriteLine("Fail");
-}
-gHPTests.Destruct();
  

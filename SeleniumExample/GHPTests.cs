@@ -59,6 +59,7 @@ namespace SeleniumExample
         }
         public void GMailLinkTest()
         {
+            driver.Navigate().Back();
             driver.FindElement(By.LinkText("Gmail")).Click();
             Thread.Sleep(3000);
             //Assert.AreEqual("Gmail", driver.Title);
@@ -68,15 +69,27 @@ namespace SeleniumExample
         }
         public void ImagesLinkTest()
         {
+            driver.Navigate().Back();
             driver.FindElement(By.PartialLinkText("mag")).Click();
-            Thread.Sleep(1000);
+            Thread.Sleep(3000);
             Assert.That(driver.Title.Contains("Images"));
             Console.WriteLine("Image link test - Pass");
         }
+        public void YoutubeLinkTest()
+        {
+                driver.FindElement(By.ClassName("gb_d")).Click();
+
+            // Thread.Sleep(1000);
+            // driver.FindElement(By.XPath("//*[@id='yDmH0d']/c-wiz/div/div/c-wiz/div/div/div[2]/div[2]/div[1]/ul/li[4]/a")).Click();
+            driver.FindElement(By.XPath("(//span[@class='Rq5Gcb'])[5]")).Click();
+
+
+        }
         public void LocationTest()
         {
+            driver.Navigate().Back();
             string location = driver.FindElement(By.XPath("/html/body/div[1]/div[6]/div[1]")).Text;
-            Thread.Sleep(2000);
+            Thread.Sleep(3000);
             Assert.That(location.Equals("India"));
             Console.WriteLine("Loc - Pass");
         }
