@@ -2,19 +2,36 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.DevTools.V117.WebAuthn;
+using SeleniumExample;
+using System.Runtime.InteropServices;
+GHPTests gHPTests = new GHPTests();
 
-IWebDriver driver=new ChromeDriver();
-driver.Url = "https://www.google.com";
-Thread.Sleep(10000);
+Console.WriteLine("Enter th choice:\n1.Edge Driver\n2.Chrome Driver");
+switch(Convert.ToInt32(Console.ReadLine()))
+{
+    case 1:
+        gHPTests.InitializeEdgeDriver(); break;
+    case 2:
+        gHPTests.InitializeChromeDriver(); break;
+    default:
+        Console.WriteLine("Invalid Entry");
+        break;
 
-string title = driver.Title;
+}
+
+
 try
 {
-    Assert.AreEqual("Google", title);
-    Console.WriteLine("Pass");
+    //gHPTests.TitleTest();
+    //gHPTests.PageSourceandURLTests();
+    //gHPTests.GSTests();
+    //gHPTests.GMailLinkTest();
+    gHPTests.ImagesLinkTest();
+    
 }
 catch (AssertionException)
 {
     Console.WriteLine("Fail");
 }
-    driver.Close();
+gHPTests.Destruct();
+ 
