@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using OpenQA.Selenium.Support.UI;
 
 namespace SeleniumExample
 {
@@ -105,6 +106,15 @@ namespace SeleniumExample
             //Assert.True(applecheckbox.Selected);
             Thread.Sleep(2000);
             Console.WriteLine("Apple is selected");
+        }
+        public void SortBySelectTest()
+        {
+            IWebElement sortby = driver.FindElement(By.ClassName("a-native-dropdowna-declarative"));
+            SelectElement sortbyselect = (SelectElement)sortby;
+            sortbyselect.SelectByValue("1");
+            Thread.Sleep(3000);
+            Console.WriteLine(sortbyselect.SelectedOption);
+
         }
         public void Destruct()
 

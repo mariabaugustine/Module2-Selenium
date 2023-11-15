@@ -67,7 +67,8 @@ foreach(var driver in drivers)
         //amazonTests.ReloadHomePageTest();
         //amazonTests.TodaysDealsTest();
         //amazonTests.SignInAccListTest();
-        amazonTests.SearchAndFilterProductByBrandTest();
+        //amazonTests.SearchAndFilterProductByBrandTest();
+        amazonTests.SortBySelectTest();
     }
     catch(AssertionException) 
     {
