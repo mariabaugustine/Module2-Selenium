@@ -53,7 +53,13 @@ namespace Assignment1_14_11_2023
             gsbutton.Click();
             //Console.WriteLine("Title:"+driver.Title);
             Assert.AreEqual("what's new for Diwali 2023 - Google Search", driver.Title);
-            Console.WriteLine("GS TEST - Pass");
+            Console.WriteLine("Google Search Test - Pass");
+        }
+        public void refreshTest()
+        {
+            driver.Navigate().Refresh();
+            Thread.Sleep(3000);
+            Console.WriteLine("Refresh test:Pass");
         }
         public void Exit()
         {

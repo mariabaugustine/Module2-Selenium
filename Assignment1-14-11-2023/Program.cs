@@ -23,6 +23,7 @@ try
     navigationTests.BackToYahooTests();
     navigationTests.BackToGoogleAgainTests();
     navigationTests.GSTests();
+    navigationTests.refreshTest();
 
 }
 catch(AssertionException)
