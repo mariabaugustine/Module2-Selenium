@@ -56,6 +56,8 @@ namespace SeleniumExample
         public void ReloadHomePageTest()
         {
             driver.Navigate().GoToUrl("https://amazon.com/");
+
+            Assert.AreEqual("Amazon.com. Spend less. Smile more.", driver.Title);
             Thread.Sleep(3000);
         }
         public void TodaysDealsTest()
@@ -63,7 +65,7 @@ namespace SeleniumExample
             IWebElement todaydeals = driver.FindElement(By.LinkText("Today's Deals"));
             if(todaydeals == null) 
             {
-                throw new NoSuchElementException("Today's link not present");
+                throw new NoSuchElementException("Today's deal link not present");
             }
             todaydeals.Click();
             Assert.That(driver.FindElement(By.TagName("h1")).Text.Equals("Today's Deals"));

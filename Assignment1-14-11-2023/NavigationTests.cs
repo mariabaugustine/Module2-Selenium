@@ -21,26 +21,31 @@ namespace Assignment1_14_11_2023
         public void NavigateToYahoo()
         {
             
-            driver.Navigate().GoToUrl("https://www.yahoo.com");
+            driver.Navigate().GoToUrl("https://www.yahoo.com/");
             Thread.Sleep(2000);
+
+            Assert.AreEqual("Yahoo | Mail, Weather, Search, Politics, News, Finance, Sports & Videos", driver.Title);
             Console.WriteLine("Go to yahoo test:Pass");
         }
         public void BackToGoogleTest()
         {
             driver.Navigate().Back();
             Thread.Sleep(2000);
+            Assert.AreEqual("Google",driver.Title);
             Console.WriteLine("Back to google test - pass");
         }
         public void BackToYahooTests()
         {
             driver.Navigate().Forward();
             Thread.Sleep(2000);
+            Assert.AreEqual("Yahoo | Mail, Weather, Search, Politics, News, Finance, Sports & Videos", driver.Title);
             Console.WriteLine("Back to yahoo test - pass");
         }
         public void BackToGoogleAgainTests()
         {
             driver.Navigate().Back();
             Thread.Sleep(1000);
+            Assert.AreEqual("Google", driver.Title);
             Console.WriteLine("Back to google again test - pass");
         }
         public void GSTests()
