@@ -31,6 +31,23 @@ namespace SeleniumNUnitExample
                 }
             }
         }
+        public bool CheckLinkStatus(string url)
+        {
+            try
+            {
+                var request = (System.Net.HttpWebRequest)
+                    System.Net.WebRequest.Create(url);
+                request.Method = "HEAD";
+                using (var response = request.GetResponse())
+                {
+                    return true;
+                }
+            }
+            catch 
+            { 
+                return false;
+            }
+        }
         [OneTimeSetUp]
         public void InitializeBrowser()
         {
