@@ -93,14 +93,37 @@ namespace SeleniumNUnitExample
         {
             element.Clear();
         }
-        [Test,Author("Maria", "mariabaugustine@gmail.com")]
+        //[Test,Author("Maria", "mariabaugustine@gmail.com")]
        
+        //[Description("Checking for invalid login")]
+        //[Category("Smoke testing")]
+        //[TestCase("abc@def.com","12345")]
+        //[TestCase("hij@xyz.com", "8765")]
+        //[TestCase("abc@gmail.com", "09876")]
+        //public void InvalidLoginCredentialTest(string email,string password)
+        //{
+        //    DefaultWait<IWebDriver> fluentWait = new DefaultWait<IWebDriver>(driver);
+        //    fluentWait.Timeout = TimeSpan.FromSeconds(5);
+        //    fluentWait.PollingInterval = TimeSpan.FromMilliseconds(100);
+        //    fluentWait.IgnoreExceptionTypes(typeof(NoSuchElementException));
+        //    fluentWait.Message = "Element not found";
+
+
+        //    IWebElement emailInput = fluentWait.Until(d => d.FindElement(By.Id("session_key")));
+        //    IWebElement passwordInput = fluentWait.Until(dri => dri.FindElement(By.Id("session_password")));
+
+        //    emailInput.SendKeys(email);
+        //    emailInput.SendKeys(password);
+
+        //    ClearForm(emailInput);
+        //    ClearForm(passwordInput);
+
+        //}
         [Description("Checking for invalid login")]
         [Category("Smoke testing")]
-        [TestCase("abc@def.com","12345")]
-        [TestCase("hij@xyz.com", "8765")]
-        [TestCase("abc@gmail.com", "09876")]
-        public void InvalidLoginCredentialTest(string email,string password)
+        [TestCaseSource(nameof(InvalidLoginData))]
+        
+        public void InvalidLoginCredentialTest(string email, string password)
         {
             DefaultWait<IWebDriver> fluentWait = new DefaultWait<IWebDriver>(driver);
             fluentWait.Timeout = TimeSpan.FromSeconds(5);
@@ -117,7 +140,16 @@ namespace SeleniumNUnitExample
 
             ClearForm(emailInput);
             ClearForm(passwordInput);
+            Thread.Sleep(TimeSpan.FromSeconds(5));
 
+        }
+        static object[] InvalidLoginData()
+        {
+            return new object[]
+            {
+                new object[] {"abc@xyz.com","1234"},
+                new object[] {"def@xyz.com", "5678" }
+            };
         }
     }
 }
