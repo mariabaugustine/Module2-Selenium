@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeleniumExample", "Selenium
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeleniumNUnitExample", "SeleniumNUnitExample\SeleniumNUnitExample.csproj", "{E04D9CE5-345D-483A-B446-A1CD6FBD86F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment1-14-11-2023", "Assignment1-14-11-2023\Assignment1-14-11-2023.csproj", "{3DC3D17B-9BA0-42C2-9714-1B38E8FA4C76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assignment1-14-11-2023", "Assignment1-14-11-2023\Assignment1-14-11-2023.csproj", "{3DC3D17B-9BA0-42C2-9714-1B38E8FA4C76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment20-11-2023_Flipkart", "Assignment20-11-2023_Flipkart\Assignment20-11-2023_Flipkart.csproj", "{D8EF3D4C-9D4E-4E6E-AFB8-0C0D08CEDA45}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{3DC3D17B-9BA0-42C2-9714-1B38E8FA4C76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DC3D17B-9BA0-42C2-9714-1B38E8FA4C76}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DC3D17B-9BA0-42C2-9714-1B38E8FA4C76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8EF3D4C-9D4E-4E6E-AFB8-0C0D08CEDA45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8EF3D4C-9D4E-4E6E-AFB8-0C0D08CEDA45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8EF3D4C-9D4E-4E6E-AFB8-0C0D08CEDA45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8EF3D4C-9D4E-4E6E-AFB8-0C0D08CEDA45}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
