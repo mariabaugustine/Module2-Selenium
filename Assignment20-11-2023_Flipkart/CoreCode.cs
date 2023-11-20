@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Assignment20_11_2023_Flipkart
 {
-    internal class CoreCode
+    public class CoreCode
     {
         public IWebDriver driver;
         public Dictionary<string, string> Properties;
@@ -38,7 +38,7 @@ namespace Assignment20_11_2023_Flipkart
             {
                 driver=new ChromeDriver();
             }
-            driver.Url = Properties["baseUrl"];
+            driver.Url = Properties["baseurl"];
             driver.Manage().Window.Maximize();
         }
         [OneTimeTearDown] 
