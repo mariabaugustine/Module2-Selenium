@@ -136,7 +136,9 @@ namespace SeleniumNUnitExample
             IWebElement passwordInput = fluentWait.Until(dri => dri.FindElement(By.Id("session_password")));
 
             emailInput.SendKeys(email);
-            emailInput.SendKeys(password);
+            passwordInput.SendKeys(password);
+
+            TakeScreenShot();
 
             ClearForm(emailInput);
             ClearForm(passwordInput);
@@ -151,5 +153,6 @@ namespace SeleniumNUnitExample
                 new object[] {"def@xyz.com", "5678" }
             };
         }
+       
     }
 }

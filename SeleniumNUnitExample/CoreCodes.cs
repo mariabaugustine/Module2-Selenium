@@ -64,6 +64,16 @@ namespace SeleniumNUnitExample
             driver.Manage().Window.Maximize();
 
         }
+        public void TakeScreenShot()
+        {
+            ITakesScreenshot screenshot = (ITakesScreenshot)driver;
+            Screenshot ss = screenshot.GetScreenshot();
+            string currentDirectory = Directory.GetParent(@"../../../").FullName;
+            string filepath = currentDirectory + "/Screenshots/screenshot_" + DateTime.Now.ToString("yyyy-MM-dd_HHmmss") + ".png";
+            ss.SaveAsFile(filepath);
+            Console.WriteLine("Take screenshot");
+
+        }
         [OneTimeTearDown]
         public void Cleanup() 
         {
