@@ -40,7 +40,7 @@ namespace Assignment21_11_2023_Naptol
             moveto.Invoke();
             Thread.Sleep(6000);
 
-            List<string> nextTab = driver.WindowHandles.ToList();
+           List<string> nextTab = driver.WindowHandles.ToList();
             driver.SwitchTo().Window(nextTab[1]);
             
             
@@ -59,12 +59,31 @@ namespace Assignment21_11_2023_Naptol
             IWebElement selectsize = fwait.Until(d => d.FindElement(By.XPath("//a[text()='Black-2.50']")));
             
             selectsize.Click();
-            IWebElement submitbutton = fwait.Until(d => d.FindElement(By.XPath("//*[@id=\"cart-panel-button-0\"]/span")));
+            IWebElement submitbutton = fwait.Until(d => d.FindElement(By.Id("cart-panel-button-0")));
             submitbutton.Click();
-            IWebElement status = fwait.Until(d => d.FindElement(By.XPath("//*[text()='My Shopping Cart: ']")));
-            Assert.That(status.Text.Contains("cart"));
+           
+            // List<string> nextTab = driver.WindowHandles.ToList();
+            //driver.SwitchTo().Window(nextTab[1]);
+            // IWebElement status = fwait.Until(d => d.FindElement(By.XPath("//*[text()='My Shopping Cart: ']")));
+            // Assert.That(status.Text.Contains("cart"));
+            IWebElement textm = fwait.Until(d => d.FindElement(By.LinkText("Reading Glasses with LED Lights (LRG4)")));
+            Assert.AreEqual("Reading Glasses with LED Lights (LRG4)", textm.Text);
 
 
+        }
+        [Test]
+        public void CloseProductInfoTabTest()
+        {
+            DefaultWait<IWebDriver> fwait = new DefaultWait<IWebDriver>(driver);
+            fwait.Timeout = TimeSpan.FromSeconds(5);
+            fwait.PollingInterval = TimeSpan.FromMilliseconds(5);
+            fwait.IgnoreExceptionTypes(typeof(NoSuchElementException));
+            fwait.Message = "Element not found";
+            IWebElement closeelement = fwait.Until(d => d.FindElement(By.XPath("//a[@title='Close']")));
+            closeelement.Click();
+            string link = "https://www.naaptol.com/eyewear/reading-glasses-with-led-lights-lrg4/p/12612074.html";
+            Assert.AreEqual(driver.Url, link);
+            
         }
 
     }
