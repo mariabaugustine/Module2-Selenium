@@ -14,6 +14,7 @@ namespace Redifff.PageObject
         public RediffHomePage(IWebDriver driver) 
         {
           this.driver = driver;
+            PageFactory.InitElements(driver, this);
         }
         //Arranage
         [FindsBy(How =How.LinkText,Using = "Create Account")]
