@@ -76,7 +76,7 @@ namespace Assignment21_11_2023_Naptol
         {
             DefaultWait<IWebDriver> fwait = new DefaultWait<IWebDriver>(driver);
             fwait.Timeout = TimeSpan.FromSeconds(5);
-            fwait.PollingInterval = TimeSpan.FromMilliseconds(5);
+            fwait.PollingInterval = TimeSpan.FromMilliseconds(50);
             fwait.IgnoreExceptionTypes(typeof(NoSuchElementException));
             fwait.Message = "Element not found";
             IWebElement closeelement = fwait.Until(d => d.FindElement(By.XPath("//a[@title='Close']")));
