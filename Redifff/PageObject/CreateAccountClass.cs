@@ -17,7 +17,7 @@ namespace Redifff.PageObject
             PageFactory.InitElements(driver, this);
         }
         //Arranage
-        [FindsBy(How = How.XPath, Using = "//input[contains(@name,'name')]")]
+        [FindsBy(How = How.XPath, Using = "//input[@name='namef810c815']")]
         public IWebElement? FullName { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//input[contains(@name,'login')]")]
@@ -26,6 +26,9 @@ namespace Redifff.PageObject
 
         [FindsBy(How =How.XPath,Using = "//input[contains(@name,'btnchk')]")]
         public IWebElement CheckAvailability { get; set; }
+
+        [FindsBy(How =How.Id,Using = "Register")]
+        public IWebElement CreateMyAccountBtn { get; set; }
 
 
         //Act
@@ -40,6 +43,10 @@ namespace Redifff.PageObject
         public void CheckAvailabilityClick()
         {
             CheckAvailability?.Click();
+        }
+        public void CreateMyAccountBtnClick() 
+        {
+            CreateMyAccountBtn.Click();
         }
         public void FullNameClear()
         {

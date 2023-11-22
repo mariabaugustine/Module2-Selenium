@@ -11,9 +11,9 @@ namespace Redifff.PageObject
     internal class RediffHomePage
     {
         IWebDriver driver;
-        public RediffHomePage(IWebDriver driver) 
+        public RediffHomePage(IWebDriver? driver) 
         {
-          this.driver = driver;
+          this.driver = driver??throw new ArgumentException(nameof(driver));
             PageFactory.InitElements(driver, this);
         }
         //Arranage
@@ -25,13 +25,18 @@ namespace Redifff.PageObject
 
 
         //Act
-        public void CreateAccountLinkClick()
+        //public void CreateAccountLinkClick()
+        //{
+        //    CreateAccountLink?.Click();
+        //}
+        //public void SignInLinkClick() 
+        //{
+        //    SignInLink?.Click(); 
+        //}
+        public CreateAccountClass CreateAccountClick()
         {
             CreateAccountLink?.Click();
-        }
-        public void SignInLinkClick() 
-        {
-            SignInLink?.Click(); 
+            return new CreateAccountClass(driver);
         }
     }
 }

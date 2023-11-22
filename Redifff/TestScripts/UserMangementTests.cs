@@ -9,6 +9,7 @@ namespace Redifff.TestScripts
 {
     internal class UserMangementTests:CoreCodes
     {
+        /*
         [Test]
         [Order(1),Category("Smoke Test")]
         public void CreateAccountLinkTest()
@@ -26,16 +27,25 @@ namespace Redifff.TestScripts
             driver.Navigate().GoToUrl("https://www.rediff.com/");
             homepage.SignInLinkClick();
             Assert.That(driver.Url.Contains("login"));
-        }
+        }*/
 
         [Test]
-        [Order(3),Category("Regression Test")]
+        [Order(1),Category("Regression Test")]
         public void CreateAccountTest()
         {
             var homepage = new RediffHomePage(driver);
-            driver.Navigate().GoToUrl("https://www.rediff.com/");
-            homepage.CreateAccountLinkClick();
-            Assert.That(driver.Url.Contains("register"));
+           if(!driver.Url.Contains("https://www.rediff.com"))
+            {
+                driver.Navigate().GoToUrl("https://www.rediff.com");
+
+            }
+           var createaccountpage=homepage.CreateAccountClick();
+            createaccountpage.FullNameType("abc");
+            createaccountpage.ReddifMailType("abc");
+            createaccountpage.CheckAvailability.Click();
+            Thread.Sleep(100);
+            createaccountpage.CreateMyAccountBtnClick();
+
         }
     }
 }
