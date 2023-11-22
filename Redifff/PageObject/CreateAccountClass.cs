@@ -17,7 +17,7 @@ namespace Redifff.PageObject
             PageFactory.InitElements(driver, this);
         }
         //Arranage
-        [FindsBy(How = How.XPath, Using = "//input[@name='namef810c815']")]
+        [FindsBy(How = How.XPath, Using = "//input[contains(@name,'name')]")]
         public IWebElement? FullName { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//input[contains(@name,'login')]")]

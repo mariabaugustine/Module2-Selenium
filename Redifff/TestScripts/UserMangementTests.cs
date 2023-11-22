@@ -29,23 +29,40 @@ namespace Redifff.TestScripts
             Assert.That(driver.Url.Contains("login"));
         }*/
 
+        //[Test]
+        //[Order(1),Category("Regression Test")]
+        //public void CreateAccountTest()
+        //{
+        //    var homepage = new RediffHomePage(driver);
+        //   if(!driver.Url.Contains("https://www.rediff.com"))
+        //    {
+        //        driver.Navigate().GoToUrl("https://www.rediff.com");
+
+        //    }
+        //   var createaccountpage=homepage.CreateAccountClick();
+        //    createaccountpage.FullNameType("abc");
+        //    createaccountpage.ReddifMailType("abc");
+        //    createaccountpage.CheckAvailability.Click();
+        //    Thread.Sleep(100);
+        //    createaccountpage.CreateMyAccountBtnClick();
+
+        //}
         [Test]
-        [Order(1),Category("Regression Test")]
-        public void CreateAccountTest()
+        [Order(1),Category("Regression Testing")]
+        public void SignInTest()
         {
             var homepage = new RediffHomePage(driver);
-           if(!driver.Url.Contains("https://www.rediff.com"))
+            if (!driver.Url.Contains("https://www.rediff.com"))
             {
                 driver.Navigate().GoToUrl("https://www.rediff.com");
-
             }
-           var createaccountpage=homepage.CreateAccountClick();
-            createaccountpage.FullNameType("abc");
-            createaccountpage.ReddifMailType("abc");
-            createaccountpage.CheckAvailability.Click();
-            Thread.Sleep(100);
-            createaccountpage.CreateMyAccountBtnClick();
-
+            var signInPage = homepage.SignInClick();
+            signInPage.TypeUserName("abc");
+            signInPage.TypePassword("QAZX");
+            signInPage.CheckRememberMe();
+            Assert.False(signInPage?.RememberMeCheckBox.Selected);
+            Thread.Sleep(1000);
+            signInPage.ClickSignInButton();
         }
     }
 }

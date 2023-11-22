@@ -33,10 +33,15 @@ namespace Redifff.PageObject
         //{
         //    SignInLink?.Click(); 
         //}
-        public CreateAccountClass CreateAccountClick()
+        //public CreateAccountClass CreateAccountClick()
+        //{
+        //    CreateAccountLink?.Click();
+        //    return new CreateAccountClass(driver);
+        //}
+        public SignInPage SignInClick()
         {
-            CreateAccountLink?.Click();
-            return new CreateAccountClass(driver);
+            SignInLink.Click();
+            return new SignInPage(driver);
         }
     }
 }
