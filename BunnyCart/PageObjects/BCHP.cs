@@ -44,6 +44,11 @@ namespace BunnyCart.PageObjects
 
         [FindsBy(How =How.XPath,Using = "//button[@title='Create an Account']")]
         private IWebElement SubmitButton {  get; set; }
+        public void ClickCreateAccount()
+        {
+            CreateAnAccountLink.Click();
+        }
+
 
         public void SignUpButton(string firstname,string lastname,string email,string password,string confirmpassword,string mobilenumber)
         {
@@ -70,7 +75,14 @@ namespace BunnyCart.PageObjects
         static void ScrollIntoView(IWebDriver driver,IWebElement element) 
         {
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
-            js.ExecuteScript("arguments[0].scrollIntoview(true);", element);
+            js.ExecuteScript("arguments[0].scrollIntoView(true);", element);
+        }
+        public SearchResult TypeSearchInput(string searchtext)
+        {
+            if(SearchInput == null)
+            {
+                throw new NoSuchElementException
+            }
         }
 
 
