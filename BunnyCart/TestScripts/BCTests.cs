@@ -11,6 +11,21 @@ namespace BunnyCart.TestScripts
     internal class BCTests:CoreCodes
     {
         [Test]
+        [TestCase("Water Poppy")]
+        public void SearchProductAndAddToCart(string searchtext)
+        {
+            BCHP bchp = new(driver);
+            var searchResultPage=bchp?.TypeSearchInput(searchtext);
+            Assert.That(searchtext.Contains(searchResultPage?.GetFirstProductLInk()));
+            var productPage=searchResultPage?.ClickFirstProductLink();
+            Assert.That(searchtext.Equals(productPage?.GetProductTitleLabel()));
+            productPage?.ClickIncQty();
+            productPage?.ClickAddToCartBtn();
+            Thread.Sleep(1000);
+
+        }
+
+        [Test]
         public void  SignUpTest()
         {
             BCHP bchp = new BCHP(driver);

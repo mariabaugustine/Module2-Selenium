@@ -59,12 +59,12 @@ namespace BunnyCart.PageObjects
             LastNameInput?.SendKeys(lastname);
             EmailField?.SendKeys(email);
 
-            ScrollIntoView(driver, modal.FindElement(By.Id("password")));
+            CoreCodes.ScrollIntoView(driver, modal.FindElement(By.Id("password")));
             PasswordField?.SendKeys(password);
             ConfirmPasswordElement?.SendKeys(confirmpassword);
 
 
-            ScrollIntoView(driver, modal.FindElement(By.Id("mobilenumber")));
+            CoreCodes.ScrollIntoView(driver, modal.FindElement(By.Id("mobilenumber")));
             MobileNumber?.SendKeys(mobilenumber);
             Thread.Sleep(1000);
 
@@ -72,17 +72,16 @@ namespace BunnyCart.PageObjects
 
 
         }
-        static void ScrollIntoView(IWebDriver driver,IWebElement element) 
-        {
-            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
-            js.ExecuteScript("arguments[0].scrollIntoView(true);", element);
-        }
+        
         public SearchResult TypeSearchInput(string searchtext)
         {
-            if(SearchInput == null)
-            {
-                throw new NoSuchElementException
-            }
+            //if(SearchInput == null)
+            //{
+            //    throw new NoSuchElementException
+            //}
+            SearchInput.SendKeys(searchtext);
+            SearchInput.SendKeys(Keys.Enter);
+            return new SearchResult(driver); 
         }
 
 
