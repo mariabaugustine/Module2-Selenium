@@ -10,7 +10,7 @@ namespace BunnyCart.TestScripts
 {
     internal class BCTests:CoreCodes
     {
-        [Test]
+        [Test,Order(2)]
         [TestCase("Water Poppy")]
         public void SearchProductAndAddToCart(string searchtext)
         {
@@ -25,7 +25,7 @@ namespace BunnyCart.TestScripts
 
         }
 
-        [Test]
+        [Test,Order(1)]
         public void  SignUpTest()
         {
             BCHP bchp = new BCHP(driver);
