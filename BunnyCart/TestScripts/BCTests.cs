@@ -71,6 +71,27 @@ namespace BunnyCart.TestScripts
 
 
                 bchp.SignUpButton(firstName, lastName, email, pwd, conpwd, mbno);
+                try
+                {
+                    Assert.That(driver?.FindElement(By.XPath("//div[" + "@class='modal-inner-wrap']//following::h1[2]")).Text,
+
+                     Is.EqualTo("Create an Account"));
+
+                    test = extent.CreateTest("Create Account Link Test - Pass");
+
+                    test.Pass("Create Account Link success");
+
+                    Console.WriteLine("ERCP");
+
+                }
+                catch(AssertionException)
+                {
+                    test = extent.CreateTest("Create Account Link Test - Fail");
+
+                    test.Fail("Create Account Link failed");
+
+                    Console.WriteLine("ERCF");
+                }
 
                 // Assert.That(""."")
 
