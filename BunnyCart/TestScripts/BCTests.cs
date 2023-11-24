@@ -11,13 +11,14 @@ namespace BunnyCart.TestScripts
     internal class BCTests:CoreCodes
     {
         [Test,Order(2)]
-        [TestCase("Water Poppy")]
-        public void SearchProductAndAddToCart(string searchtext)
+        [TestCase("Water",2)]
+        public void SearchProductAndAddToCart(string searchtext,int count)
         {
             BCHP bchp = new(driver);
             var searchResultPage=bchp?.TypeSearchInput(searchtext);
+            CoreCodes.ScrollIntoView(driver, driver.FindElement(By.XPath("//*[@id=\'amasty-shopby-product-list\']/div[2]/ol/li[1]")));
             Assert.That(searchtext.Contains(searchResultPage?.GetFirstProductLInk()));
-            var productPage=searchResultPage?.ClickFirstProductLink();
+            var productPage=searchResultPage?.ClickFirstProductLink(count);
             Assert.That(searchtext.Equals(productPage?.GetProductTitleLabel()));
             productPage?.ClickIncQty();
             productPage?.ClickAddToCartBtn();

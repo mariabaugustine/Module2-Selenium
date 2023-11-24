@@ -59,12 +59,13 @@ namespace BunnyCart.PageObjects
             LastNameInput?.SendKeys(lastname);
             EmailField?.SendKeys(email);
 
-            CoreCodes.ScrollIntoView(driver, modal.FindElement(By.Id("password")));
+            // CoreCodes.ScrollIntoView(driver, modal.FindElement(By.Id("password")));
+            CoreCodes.ScrollIntoView(driver, PasswordField);
             PasswordField?.SendKeys(password);
             ConfirmPasswordElement?.SendKeys(confirmpassword);
 
 
-            CoreCodes.ScrollIntoView(driver, modal.FindElement(By.Id("mobilenumber")));
+            CoreCodes.ScrollIntoView(driver,MobileNumber);
             MobileNumber?.SendKeys(mobilenumber);
             Thread.Sleep(1000);
 

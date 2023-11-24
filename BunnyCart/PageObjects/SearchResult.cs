@@ -17,15 +17,18 @@ namespace BunnyCart.PageObjects
             this.driver = driver;
             PageFactory.InitElements(driver, this);
         }
-        [FindsBy(How =How.XPath,Using ="")]
-        private IWebElement? FirstProductLink { get; set; }
+        //[FindsBy(How =How.XPath,Using ="")]
+       // private IWebElement? FirstProductLink { get; set; }
 
         public string? GetFirstProductLInk()
         {
+            IWebElement? FirstProductLink = driver.FindElement(By.XPath("//*[@id='amasty-shopby-product-list']/div[2]/ol/li[1]/div/div[2]/strong/a[1]"));
+
             return FirstProductLink?.Text;
         }
-        public ProductPage ClickFirstProductLink()
+        public ProductPage ClickFirstProductLink(int count)
         {
+            IWebElement? FirstProductLink = driver.FindElement(By.XPath("//*[@id='amasty-shopby-product-list']/div[2]/ol/li["+count+"]/div/div[2]/strong/a[1]"));
             FirstProductLink?.Click();
             return new ProductPage(driver);
            

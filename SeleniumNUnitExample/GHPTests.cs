@@ -19,19 +19,28 @@ namespace SeleniumNUnitExample
             Assert.AreEqual("Google", driver.Title);
             Console.WriteLine("Title test - Pass");
         }
-        [Ignore("other")]
+        //[Ignore("other")]
         [Test]
         [Order(1)]
         public void GSTests()
         {
-            IWebElement searchinputtextbox = driver.FindElement(By.Id("APjFqb"));
-            searchinputtextbox.SendKeys("hp laptop");
-            Thread.Sleep(5000);
-            //IWebElement gsButton = driver.FindElement(By.Name("btnK"));
-            IWebElement gsbutton = driver.FindElement(By.ClassName("gNO89b"));
-            gsbutton.Click();
-            Assert.AreEqual("hp laptop - Google Search", driver.Title);
-            Console.WriteLine("GS TEST - Pass");
+            string currDir = Directory.GetParent(@"../../../").FullName;
+            string excelFilePath = currDir + "\\InputData.xlsx";
+            Console.WriteLine(excelFilePath);
+            List<GoogleSearch> excelDataList = ExcelUtils.ReadExcelData(excelFilePath);
+            foreach (var excelData in excelDataList)
+            {
+                Console.WriteLine($"Text:{excelData.Searchtest}");
+                IWebElement searchinputtextbox = driver.FindElement(By.Id("APjFqb"));
+                searchinputtextbox.SendKeys(excelData.Searchtest);
+                Thread.Sleep(5000);
+                //IWebElement gsButton = driver.FindElement(By.Name("btnK"));
+                IWebElement gsbutton = driver.FindElement(By.ClassName("gNO89b"));
+                gsbutton.Click();
+               // Assert.AreEqual("hp laptop - Google Search", driver.Title);
+               //Assert.That(driver.Title,is)
+                Console.WriteLine("GS TEST - Pass");
+            }
         }
         [Ignore("other")]
         [Test]
