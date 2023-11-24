@@ -1,4 +1,5 @@
 ﻿using BunnyCart.PageObjects;
+using BunnyCart.Utilities;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -31,15 +32,60 @@ namespace BunnyCart.TestScripts
         {
             BCHP bchp = new BCHP(driver);
             bchp.ClickCreateAccount();
-            try
+            string? currDir = Directory.GetParent(@"../../../")?.FullName;
+
+            string? excelFilePath = currDir + "/TestData/InputData.xlsx";
+
+            string? sheetName = "CreateAccount";
+
+
+
+            List<SignUpData> excelDataList = ExcelUtilities.ReadExcelData(excelFilePath, sheetName);
+
+
+
+            foreach (var excelData in excelDataList)
+
             {
-                Assert.That(driver.FindElement(By.XPath("//div["+"@class='modal-inner-wrap']//following::h1[2]")).Text, Is.EqualTo("Create an Account"));
+
+
+
+                string? firstName = excelData?.FirstName;
+
+                string? lastName = excelData?.LastName;
+
+                string? email = excelData?.Email;
+
+                string? pwd = excelData?.Password;
+
+                string? conpwd = excelData?.ConfirmPassword;
+
+                string? mbno = excelData?.MobileNumber;
+
+
+
+                Console.WriteLine($"First Name: {firstName}, Last Name: {lastName}, Email: {email}, Password: {pwd}, Confirm Password: {conpwd}, Mobile Number: {mbno}");
+
+
+
+
+
+                bchp.SignUpButton(firstName, lastName, email, pwd, conpwd, mbno);
+
+                // Assert.That(""."")
+
+
+
             }
-            catch(AssertionException) 
-            {
-                Console.WriteLine("Create account modal not present");
-            }
-            bchp.SignUpButton("Abc", "Def", "ghi@gmail.com", "12345", "12345", "9876543210");
+            //try
+            //{
+            //    Assert.That(driver.FindElement(By.XPath("//div["+"@class='modal-inner-wrap']//following::h1[2]")).Text, Is.EqualTo("Create an Account"));
+            //}
+            //catch(AssertionException) 
+            //{
+            //    Console.WriteLine("Create account modal not present");
+            //}
+            //bchp.SignUpButton("Abc", "Def", "ghi@gmail.com", "12345", "12345", "9876543210");
         }
     }
 }
