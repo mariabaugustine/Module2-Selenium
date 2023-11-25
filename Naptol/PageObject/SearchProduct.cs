@@ -17,11 +17,11 @@ namespace Naptol.PageObject
             this.driver = driver;
             PageFactory.InitElements(driver, this);
         }
-        [FindsBy(How =How.XPath,Using = "//a[text()='Black-2.50']")]
+        [FindsBy(How =How.XPath,Using = "//a[text()='Rose Gold-2.50']")]
         public IWebElement Size { get; set; }
         [FindsBy(How = How.Id, Using = "cart-panel-button-0")]
         public IWebElement BuyNowButton { get; set;}
-        [FindsBy(How = How.Id, Using = "cart-panel-button-0")]
+        [FindsBy(How = How.XPath, Using = "//a[@title='Close']")]
         public IWebElement Close { get; set;}
 
         public void SizeSelect()

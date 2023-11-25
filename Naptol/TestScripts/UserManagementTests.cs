@@ -1,4 +1,5 @@
 ﻿using Naptol.PageObject;
+using Naptol.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,17 @@ namespace Naptol.TestScripts
             {
                 driver.Navigate().GoToUrl("https://www.naaptol.com/");
             }
-            homepage.TypeSearchBox("eyewear"); ;
+            string currDir = Directory.GetParent(@"../../../").FullName;
+            string? excelFileePath = currDir + "/TestData/InputData.xlsx";
+            string sheetName = "SearchProduct";
+            List<ProductData>productDataList=ExcelUtilities.ReadExcelData(excelFileePath, sheetName);
+            foreach(var  productData in productDataList) 
+            { 
+                string productName=productData.ProductName;
+                Console.WriteLine($"Product Name:{productName}");
+                homepage.TypeSearchBox(productName);
+            }
+           
             //Assert.That(driver.Url.Contains("eyewear"));
             var selectproductlist=new SearchProductListPage(driver);
             selectproductlist.ClickFifthElement();
@@ -28,11 +39,13 @@ namespace Naptol.TestScripts
             driver.SwitchTo().Window(nextTab[1]);
 
             var buyProduct = new SearchProduct(driver);
+            Thread.Sleep(1000);
             buyProduct.SizeSelect();
+            Thread.Sleep(1000);
             buyProduct.ClickBuyNow();
-            //Thread.Sleep(1000);
+            Thread.Sleep(1000);
             buyProduct.ClickClose();
-            //Thread.Sleep(1000);
+            Thread.Sleep(1000);
 
         }
     }
