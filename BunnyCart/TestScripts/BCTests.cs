@@ -1,11 +1,14 @@
-﻿using BunnyCart.PageObjects;
+﻿using AventStack.ExtentReports.Model;
+using BunnyCart.PageObjects;
 using BunnyCart.Utilities;
 using OpenQA.Selenium;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Log = Serilog.Log;
 
 namespace BunnyCart.TestScripts
 {
@@ -32,8 +35,22 @@ namespace BunnyCart.TestScripts
         {
             string currentDirectory = Directory.GetParent(@"../../../").FullName;
             string logfilepath = currentDirectory + "/Logs/log_" + DateTime.Now.ToString("yyyy-MM-dd_HHmmss") + ".txt";
+
+            Log.Logger = new LoggerConfiguration().WriteTo.Console().WriteTo.
+                File(logfilepath, rollingInterval: RollingInterval.Day).CreateLogger();
+
+
+
             BCHP bchp = new BCHP(driver);
+            Log.Information("Create account started");
             bchp.ClickCreateAccount();
+
+            Log.Information("Create account test clicked");
+           Thread.Sleep(1000);
+            try
+            {
+                Assert.True(driver.FindElement(By.XPath("")))
+            }
             string? currDir = Directory.GetParent(@"../../../")?.FullName;
 
             string? excelFilePath = currDir + "/TestData/InputData.xlsx";
