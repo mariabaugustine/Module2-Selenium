@@ -49,8 +49,20 @@ namespace BunnyCart.TestScripts
            Thread.Sleep(1000);
             try
             {
-                Assert.True(driver.FindElement(By.XPath("")))
+                Assert.True(driver.FindElement(By.XPath("//div[\" + \"@class='modal-inner-wrap']//following::h1[2]")).Text
+                    == "Create an Account", $"Test failed for create account");
+                Log.Information("Test passed for Create Account");
+                test = extent.CreateTest("Create Account Link Test");
+                test.Pass("Create account link success");
             }
+            catch(AssertionException ex)
+            {
+                Log.Error($"Test failed for create account.\nException:{ex.Message}");
+                test = extent.CreateTest("Create Account Test");
+                test.Fail("Creat account link failed");
+            }
+            Assert.That(driver?.FindElement(By.XPath("//div[\" + \"@class='modal-inner-wrap']//following::h1[2]")).Text, Is.EqualTo("Create an Account"));
+
             string? currDir = Directory.GetParent(@"../../../")?.FullName;
 
             string? excelFilePath = currDir + "/TestData/InputData.xlsx";
