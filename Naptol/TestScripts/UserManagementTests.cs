@@ -53,7 +53,7 @@ namespace Naptol.TestScripts
             Thread.Sleep(1000);
             var cart = new Cart(driver);
             
-            cart.ClickIncrement("2");
+            cart.ClickIncrement();
             TakeScreenShot();
             
             Thread.Sleep(3000);

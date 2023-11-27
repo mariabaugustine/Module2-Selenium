@@ -30,6 +30,8 @@ namespace BunnyCart.TestScripts
         [Test,Order(1)]
         public void  SignUpTest()
         {
+            string currentDirectory = Directory.GetParent(@"../../../").FullName;
+            string logfilepath = currentDirectory + "/Logs/log_" + DateTime.Now.ToString("yyyy-MM-dd_HHmmss") + ".txt";
             BCHP bchp = new BCHP(driver);
             bchp.ClickCreateAccount();
             string? currDir = Directory.GetParent(@"../../../")?.FullName;

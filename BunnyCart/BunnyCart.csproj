@@ -30,7 +30,7 @@
 </ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="ExtentReport\" />
+	  <Folder Include="Logs\" />
 	  <Folder Include="TestData\" />
 	</ItemGroup>
 

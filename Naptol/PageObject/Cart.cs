@@ -24,20 +24,21 @@ namespace Naptol.PageObject
         [FindsBy(How =How.LinkText,Using ="Remove")]
         private IWebElement remove { get; set;}
        
-        public void ClickIncrement(string number)
+        public void ClickIncrement()
         {
-            ClickBckspace();
-            IncrementQuantity.SendKeys(number);
-            IncrementQuantity.SendKeys(Keys.Alt);
+            int q=Convert.ToInt32(IncrementQuantity?.GetAttribute("value"));
+            q++;
+            IncrementQuantity.Clear();
+            IncrementQuantity.SendKeys(q.ToString());
+            //IncrementQuantity.SendKeys(Keys.Backspace);
+            //IncrementQuantity.SendKeys(number);
+            //IncrementQuantity.SendKeys(Keys.Enter);
 
         }
         public void ClickRemove()
         {
             remove.Click();
         }
-        public void ClickBckspace()
-        {
-            IncrementQuantity.SendKeys(Keys.Backspace);
-        }
+        
    }
 }
