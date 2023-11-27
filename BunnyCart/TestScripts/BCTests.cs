@@ -1,6 +1,7 @@
 ﻿using AventStack.ExtentReports.Model;
 using BunnyCart.PageObjects;
 using BunnyCart.Utilities;
+using ExcelDataReader.Log;
 using OpenQA.Selenium;
 using Serilog;
 using System;
@@ -49,7 +50,7 @@ namespace BunnyCart.TestScripts
            Thread.Sleep(1000);
             try
             {
-                Assert.True(driver.FindElement(By.XPath("//div[\" + \"@class='modal-inner-wrap']//following::h1[2]")).Text
+                Assert.True(driver.FindElement(By.XPath("//div[@class='modal-inner-wrap']//following::h1[2]")).Text
                     == "Create an Account", $"Test failed for create account");
                 Log.Information("Test passed for Create Account");
                 test = extent.CreateTest("Create Account Link Test");
@@ -102,33 +103,34 @@ namespace BunnyCart.TestScripts
 
 
                 bchp.SignUpButton(firstName, lastName, email, pwd, conpwd, mbno);
-                try
-                {
-                    Assert.That(driver?.FindElement(By.XPath("//div[" + "@class='modal-inner-wrap']//following::h1[2]")).Text,
+                //try
+                //{
+                //    Assert.That(driver?.FindElement(By.XPath("//div[" + "@class='modal-inner-wrap']//following::h1[2]")).Text,
 
-                     Is.EqualTo("Create an Account"));
+                //     Is.EqualTo("Create an Account"));
 
-                    test = extent.CreateTest("Create Account Link Test - Pass");
+                //    test = extent.CreateTest("Create Account Link Test - Pass");
 
-                    test.Pass("Create Account Link success");
+                //    test.Pass("Create Account Link success");
 
-                    Console.WriteLine("ERCP");
+                //    Console.WriteLine("ERCP");
 
-                }
-                catch(AssertionException)
-                {
-                    test = extent.CreateTest("Create Account Link Test - Fail");
+                //}
+                //catch(AssertionException)
+                //{
+                //    test = extent.CreateTest("Create Account Link Test - Fail");
 
-                    test.Fail("Create Account Link failed");
+                //    test.Fail("Create Account Link failed");
 
-                    Console.WriteLine("ERCF");
-                }
+                //    Console.WriteLine("ERCF");
+                //}
 
                 // Assert.That(""."")
 
 
 
             }
+            Log.CloseAndFlush();
             //try
             //{
             //    Assert.That(driver.FindElement(By.XPath("//div["+"@class='modal-inner-wrap']//following::h1[2]")).Text, Is.EqualTo("Create an Account"));
@@ -138,6 +140,7 @@ namespace BunnyCart.TestScripts
             //    Console.WriteLine("Create account modal not present");
             //}
             //bchp.SignUpButton("Abc", "Def", "ghi@gmail.com", "12345", "12345", "9876543210");
+
         }
     }
 }

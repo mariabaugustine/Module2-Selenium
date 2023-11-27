@@ -104,20 +104,20 @@ namespace BunnyCart
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
             js.ExecuteScript("arguments[0].scrollIntoView(true);", element);
         }
-        //protected void LogTestResult(string testName,string result,string errorMessage=null)
-        //{
-        //    Log.Information(result);
-        //    test = extent.CreateTest(testName);
-        //    if(errorMessage == null) 
-        //    {
-        //        Log.Information(testName + "Passed");
-        //        test.Pass(result);
-        //    }
-        //    else
-        //    {
-        //        Log.Error($"Test Failed for {testName})
-        //    }
-        //}
+        protected void LogTestResult(string testName, string result, string errorMessage = null)
+        {
+            Log.Information(result);
+            test = extent.CreateTest(testName);
+            if (errorMessage == null)
+            {
+                Log.Information(testName + "Passed");
+                test.Pass(result);
+            }
+            else
+            {
+                Log.Error($"Test Failed for {testName}. \n Exception: \n {errorMessage}");
+            }
+        }
         [OneTimeTearDown]
         public void Cleanup() 
         {
